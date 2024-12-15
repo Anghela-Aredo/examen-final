@@ -1,0 +1,19 @@
+package com.examen.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.examen.model.Cliente;
+import com.examen.repository.IClienteRepository;
+
+@Service
+public class ClienteService {
+
+    @Autowired
+    private IClienteRepository clienteRepository;
+
+    public Cliente obtenerClientePorCodigo(String codigoUnico) {
+        return clienteRepository.findById(codigoUnico)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado con el código: " + codigoUnico));
+    }
+}

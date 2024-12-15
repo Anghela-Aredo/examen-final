@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    discovery:
+      enabled: true  # Para habilitar el descubrimiento de servicios (Eureka)
+    feign:
+      enabled: true  # Habilitar Feign Client

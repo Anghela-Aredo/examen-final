@@ -1,0 +1,12 @@
+package com.examen.repository;
+
+import com.examen.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface IProductoRepository extends JpaRepository<Product, Long> {
+    List<Product> findByCodigo_Unico(String codigoUnico);
+}

@@ -1,0 +1,30 @@
+services:
+  client-service:
+    build:
+      context: ./REST-Cliente   # Ruta correcta
+      dockerfile: Dockerfile
+    container_name: REST-Cliente
+    ports:
+      - "8082:8082"
+
+  product-service:
+    build:
+      context: ./REST-Productos  # Ruta correcta
+      dockerfile: Dockerfile
+    container_name: REST-Productos
+    ports:
+      - "8083:8083"
+
+  bff-service:
+    build:
+      context: ./REST-Bff       # Ruta correcta
+      dockerfile: Dockerfile
+    container_name: REST-Bff
+    ports:
+      - "8081:8081"
+    depends_on:
+      - client-service
+      - product-service
+    environment:
+      - CLIENTES_SERVICE_URL=http://REST-Cliente:8082/api/clientes
+      - PRODUCTOS_SERVICE_URL=http://REST-Productos:8083/api/prodcutos

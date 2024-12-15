@@ -1,0 +1,35 @@
+
+spring:
+  application:
+    name: REST-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: REST-Cliente
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/clientes
+        - id: REST-Producto
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/prodcutos
+        - id: REST-Bff
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/detalle
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8090
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
+    org.springframework.security.web.server.authorization.AuthorizationWebFilter: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG

@@ -1,0 +1,32 @@
+package com.examen.service;
+
+import com.examen.entity.Client;
+import com.examen.entity.Product;
+import com.examen.feignclient.ClienteFeignClient;
+import com.examen.feignclient.ProductoFeignClient;
+import com.examen.model.DetalleRespuesta;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+
+public class DetalleService {
+
+    @Autowired
+    private ClienteFeignClient clienteFeignClient;
+
+    @Autowired
+    private ProductoFeignClient productoFeignClient;
+
+    public DetalleRespuesta obtenerDetallesPorCodigoUnico(String codigo_unico) {
+        Client cliente = clienteFeignClient.obtenerClientePorCodigo(codigo_unico);
+        List<Product> productos = productoFeignClient.obtenerProductosPorCodigo(codigo_unico);
+
+        DetalleRespuesta  detalles = new DetalleRespuesta ();
+        detalles.setCliente(cliente);
+        detalles.setProductos(productos);
+        return detalles;
+    }
+}

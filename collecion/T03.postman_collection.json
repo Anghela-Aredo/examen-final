@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "5bebf2dd-7e66-4bc7-855f-6c3dae331a18",
+		"name": "T03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38357766"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8087/api/clientes/agregarCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"codigo_unico\": \"d0eaf8f0-1b10-4a7f-b93dbhucebueucwub\",\r\n        \"nombre\": \"anghela\",\r\n        \"apellido\": \"aredo\",\r\n        \"tipo_documento\": \"dni\",\r\n        \"numero_documento\": \"A12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/api/clientes/agregarCliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"clientes",
+						"agregarCliente"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
